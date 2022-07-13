@@ -13,6 +13,11 @@ import os
 
 session = requests.Session()
 
+LINE_KEY = "fAf1bFGa2-3np-NztbgltNCQfj3ew3ha6gx7PwBm9IQ"
+LINE_EVENT = "sendLine"
+SHEETS_KEY = "None"
+SHEETS_EVENT = "None"
+
 class App:
     def __init__(self, window, window_title, video_source_0=0):
         self.window = window
@@ -20,11 +25,11 @@ class App:
         self.window.geometry('500x570')
         self.window.resizable(False, False)
 
-        self.LINE_event_name = 'LLLLLLLLLLLLLLLLLLLL'
-        self.LINE_key = 'KKKKKKKKKKKKKKKKKKKK'
+        self.LINE_event_name = LINE_EVENT
+        self.LINE_key = LINE_KEY
 
-        self.SHEETS_event_name = 'SSSSSSSSSSSSSSSS'
-        self.SHEETS_key = 'KKKKKKKKKKKKKKKKKKKKKKKKK'
+        self.SHEETS_event_name = SHEETS_EVENT
+        self.SHEETS_key = SHEETS_KEY 
 
         self.Start_flag = 0
 

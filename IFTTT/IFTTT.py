@@ -32,9 +32,9 @@ try:
             LINE_URL='https://maker.ifttt.com/trigger/' + LINE_event_name + '/with/key/' + LINE_key
             r = session.post(LINE_URL, params={"value1":h0,"value2":t0,"value3":message})
 
-            # Your IFTTT SHEETS_URL with event name, key and json parameters (values)
-            SHEETS_URL='https://maker.ifttt.com/trigger/' + SHEETS_event_name + '/with/key/' + SHEETS_key
-            r = session.post(SHEETS_URL, params={"value1":h0,"value2":t0,"value3":message})
+            # # Your IFTTT SHEETS_URL with event name, key and json parameters (values)
+            # SHEETS_URL='https://maker.ifttt.com/trigger/' + SHEETS_event_name + '/with/key/' + SHEETS_key
+            # r = session.post(SHEETS_URL, params={"value1":h0,"value2":t0,"value3":message})
 
             PRE_SECOND=time.time()
 

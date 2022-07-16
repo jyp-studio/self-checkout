@@ -5,16 +5,15 @@
 from msilib.schema import Font
 import sys
 import time
+import cv2
 
 from Main_ui import *
 from start_ui import *
 from PyQt5.QtWidgets import QApplication, QWidget,QDesktopWidget
 from PyQt5.QtCore import pyqtSlot,QTimer
 from PyQt5.QtGui import QImage,QPixmap
-###
-import cv2
 
-
+#起始畫面的基本設定
 class StartWindow(QWidget,Ui_Start):
     def __init__(self):
 
@@ -31,7 +30,7 @@ class StartWindow(QWidget,Ui_Start):
         
         
         
-        
+#主畫面的設定及書寫      
 class MainWindow(QWidget,Ui_Main):
     def __init__(self):
 
@@ -44,7 +43,7 @@ class MainWindow(QWidget,Ui_Main):
         size= self.geometry()
         #print(size)
         self.move((screen.width()- size.width()) / 2, (screen.height() - size.height()) / 2)
-        ###取得螢幕大小並使GUI置中
+        
 
         # create a timer
         self.timer = QTimer()
@@ -76,6 +75,7 @@ class MainWindow(QWidget,Ui_Main):
             # start timer
             self.timer.start(20)
             # update control_bt text
+            #按下start 開始啟動 這邊可以做啟動後要的程式書寫
             self.control_bt.setText("Stop")
             self.Name.setText("start")
             self.Price.setText("start")
@@ -86,6 +86,7 @@ class MainWindow(QWidget,Ui_Main):
             # release video capture
             self.cap.release()
             # update control_bt text
+            #按下stop 鏡頭會暫停 這邊可以做關閉後要的程式書寫
             self.control_bt.setText("Start")
             self.Name.setText("stop")
             self.Price.setText("stop")

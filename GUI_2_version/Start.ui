@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>996</width>
+    <height>791</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>800</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);
+border-radius:50px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Start_Button">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>300</y>
+     <width>400</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Times New Roman</family>
+     <pointsize>47</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+QPushButton#Start_Button{
+	background-color: rgb(140, 140, 140);
+	color: rgb(255, 255, 255);
+	border-radius:15px;
+}
+QPushButton#Start_Button:hover{
+ 
+	background-color: rgb(116, 126, 89);
+}
+QPushButton#Start_Button:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(100, 100, 50);
+}</string>
+   </property>
+   <property name="text">
+    <string>Check out</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exit">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>710</y>
+     <width>111</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>26</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+QPushButton#exit{
+	
+	background-color: rgb(150,150,150);
+	color: rgb(0, 0, 0);
+	border-radius:15px;
+}
+QPushButton#exit:hover{
+	background-color: rgb(116, 126, 89);
+	color: rgb(255, 255, 255);
+}
+QPushButton#exit:pressed{
+	padding-left:5px;
+	padding-top:5px;
+	color: rgb(255, 255, 255);
+	background-color: rgb(100, 100, 50);
+}</string>
+   </property>
+   <property name="text">
+    <string>exit</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>exit</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>813</x>
+     <y>744</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>499</x>
+     <y>399</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

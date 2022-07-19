@@ -3,6 +3,3 @@ keyboard
 laptop
 cup
 chair
-
-
-

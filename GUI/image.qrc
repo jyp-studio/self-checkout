@@ -1,7 +1,0 @@
-<RCC>
-  <qresource prefix="image">
-    <file>digi_logo.png</file>
-    <file>background.jpg</file>
-    <file>DIGI+Talent.jpg</file>
-  </qresource>
-</RCC>

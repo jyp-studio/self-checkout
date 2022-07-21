@@ -14,9 +14,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Main(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(996, 791)
+        Form.resize(992, 782)
         Form.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         Form.setAttribute(QtCore.Qt.WA_TranslucentBackground)
+
         font = QtGui.QFont()
         font.setPointSize(13)
         Form.setFont(font)
@@ -26,19 +27,6 @@ class Ui_Main(object):
 "border-radius:50px;")
         self.background.setText("")
         self.background.setObjectName("background")
-        self.Price = QtWidgets.QLineEdit(Form)
-        self.Price.setGeometry(QtCore.QRect(789, 180, 190, 350))
-        self.Price.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
-        self.Price.setObjectName("Price")
-        self.Name = QtWidgets.QLineEdit(Form)
-        self.Name.setGeometry(QtCore.QRect(600, 180, 191, 350))
-        self.Name.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"border-color: rgb(0, 0, 0);\n"
-"font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
-        self.Name.setObjectName("Name")
         self.verticalLayoutWidget = QtWidgets.QWidget(Form)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(10, 40, 571, 731))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
@@ -77,18 +65,18 @@ class Ui_Main(object):
 "color: rgb(255, 255, 255);")
         self.label_Price.setObjectName("label_Price")
         self.horizontalLayout.addWidget(self.label_Price)
-        self.label_4 = QtWidgets.QLabel(Form)
-        self.label_4.setGeometry(QtCore.QRect(600, 580, 71, 41))
-        self.label_4.setStyleSheet("font: 18pt \"Times New Roman\";\n"
+        self.label_Total = QtWidgets.QLabel(Form)
+        self.label_Total.setGeometry(QtCore.QRect(600, 580, 71, 41))
+        self.label_Total.setStyleSheet("font: 18pt \"Times New Roman\";\n"
 "color: rgb(255, 255, 255);")
-        self.label_4.setObjectName("label_4")
-        self.lineEdit = QtWidgets.QLineEdit(Form)
-        self.lineEdit.setGeometry(QtCore.QRect(670, 580, 311, 41))
-        self.lineEdit.setStyleSheet("background-color: rgb(0, 0, 0);\n"
+        self.label_Total.setObjectName("label_Total")
+        self.total = QtWidgets.QLineEdit(Form)
+        self.total.setGeometry(QtCore.QRect(670, 580, 311, 41))
+        self.total.setStyleSheet("background-color: rgb(0, 0, 0);\n"
 "border-color: rgb(0, 0, 0);\n"
 "font: 18pt \"Times New Roman\";\n"
 "color: rgb(255, 255, 255);")
-        self.lineEdit.setObjectName("lineEdit")
+        self.total.setObjectName("total")
         self.exit = QtWidgets.QPushButton(Form)
         self.exit.setGeometry(QtCore.QRect(860, 700, 111, 71))
         font = QtGui.QFont()
@@ -112,6 +100,20 @@ class Ui_Main(object):
 "    background-color: rgb(100, 100, 50);\n"
 "}")
         self.exit.setObjectName("exit")
+        self.Name = QtWidgets.QTextEdit(Form)
+        self.Name.setGeometry(QtCore.QRect(600, 180, 191, 350))
+        self.Name.setStyleSheet("background-color: rgb(0, 0, 0);\n"
+"border-color: rgb(0, 0, 0);\n"
+"font: 18pt \"Times New Roman\";\n"
+"color: rgb(255, 255, 255);")
+        self.Name.setObjectName("Name")
+        self.Price = QtWidgets.QTextEdit(Form)
+        self.Price.setGeometry(QtCore.QRect(789, 180, 190, 350))
+        self.Price.setStyleSheet("background-color: rgb(0, 0, 0);\n"
+"border-color: rgb(0, 0, 0);\n"
+"font: 18pt \"Times New Roman\";\n"
+"color: rgb(255, 255, 255);")
+        self.Price.setObjectName("Price")
 
         self.retranslateUi(Form)
         self.exit.clicked.connect(Form.close) # type: ignore
@@ -124,7 +126,7 @@ class Ui_Main(object):
         self.Content.setText(_translate("Form", "CONTENT"))
         self.label_Name.setText(_translate("Form", "Name"))
         self.label_Price.setText(_translate("Form", "Price"))
-        self.label_4.setText(_translate("Form", "Total"))
+        self.label_Total.setText(_translate("Form", "Total"))
         self.exit.setText(_translate("Form", "exit"))
 
 

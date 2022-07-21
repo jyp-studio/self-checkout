@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>996</width>
-    <height>791</height>
+    <width>992</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="font">
@@ -33,37 +33,6 @@ border-radius:50px;</string>
    </property>
    <property name="text">
     <string/>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="Price">
-   <property name="geometry">
-    <rect>
-     <x>789</x>
-     <y>180</y>
-     <width>190</width>
-     <height>350</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 0);
-font: 18pt &quot;Times New Roman&quot;;
-color: rgb(255, 255, 255);</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="Name">
-   <property name="geometry">
-    <rect>
-     <x>600</x>
-     <y>180</y>
-     <width>191</width>
-     <height>350</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0, 0);
-border-color: rgb(0, 0, 0);
-font: 18pt &quot;Times New Roman&quot;;
-color: rgb(255, 255, 255);</string>
    </property>
   </widget>
   <widget class="QWidget" name="verticalLayoutWidget">
@@ -151,7 +120,7 @@ color: rgb(255, 255, 255);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="label_Total">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -168,7 +137,7 @@ color: rgb(255, 255, 255);</string>
     <string>Total</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="total">
    <property name="geometry">
     <rect>
      <x>670</x>
@@ -219,6 +188,38 @@ QPushButton#exit:pressed{
    </property>
    <property name="text">
     <string>exit</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="Name">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>180</y>
+     <width>191</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+font: 18pt &quot;Times New Roman&quot;;
+color: rgb(255, 255, 255);</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="Price">
+   <property name="geometry">
+    <rect>
+     <x>789</x>
+     <y>180</y>
+     <width>190</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);
+border-color: rgb(0, 0, 0);
+font: 18pt &quot;Times New Roman&quot;;
+color: rgb(255, 255, 255);</string>
    </property>
   </widget>
  </widget>

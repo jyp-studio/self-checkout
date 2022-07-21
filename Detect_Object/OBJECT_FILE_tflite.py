@@ -15,6 +15,7 @@ from PIL import Image
 from tflite_runtime.interpreter import Interpreter
 # from tflite_runtime.interpreter import load_delegate
 
+# 設定相機長寬
 CAMERA_WIDTH = 640
 CAMERA_HEIGHT = 480
 
@@ -81,26 +82,27 @@ def main():
       '--labels', help='File path of labels file.', required=False,
       default='coco_labels.txt')
   parser.add_argument(
-      '--file', help='File path of video(.mp4) file.', required=True)
+      '--file', help='File path of video(.mp4) file.', required=True,
+      default='test4.mp4')
   parser.add_argument(
       '--threshold',
       help='Score threshold for detected objects.', required=False,
       type=float, default=0.4)
   args = parser.parse_args()
 
-  labels = load_labels(args.labels)
+  labels = load_labels(args.labels) # 讀取 coco_labels.txt
 
   # interpreter = tf.lite.Interpreter(args.model)
-  interpreter = Interpreter(args.model)
+  interpreter = Interpreter(args.model) # 設定指定的辨識 model
 
   interpreter.allocate_tensors()
   _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
 
-  cap = cv2.VideoCapture(args.file)
+  cap = cv2.VideoCapture(args.file) # 讀取指定的檔案
   # cap.set(cv2.CAP_PROP_FRAME_WIDTH,CAMERA_WIDTH)
   # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT)
 
-  cv2.namedWindow('Object Detecting....')
+  cv2.namedWindow('Object Detecting....') # 設定相機視窗的 title
 
   file_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
   cv2.createTrackbar('time', 'Object Detecting....', 0, file_frames, nothing)
@@ -136,14 +138,17 @@ def main():
     
     image = cv2.resize(image_src, (input_width, input_height))
 
+    # 計算辨識所耗時間
     start = time.perf_counter()
     if (times==1):
       results = detect_objects(interpreter, image, args.threshold)
 
       inference_time = time.perf_counter() - start
 
+      # 印出總共偵測到幾個物品
       print("Length of results = " ,len(results))
 
+      # 設定偵測到之物品的 label 與在畫面中的位置
       for num in range(len(results)) :
         label_id=int(results[num]['class_id'])
         box_top=int(results[num]['bounding_box'][0] * CAMERA_HEIGHT)
@@ -151,17 +156,19 @@ def main():
         box_bottom=int(results[num]['bounding_box'][2] * CAMERA_HEIGHT)
         box_right=int(results[num]['bounding_box'][3] * CAMERA_WIDTH)
 
-        if (labels[label_id] != ''):    #框選所有類別
-        # if (labels[label_id] == 'person') and (box_top > int(0.5* CAMERA_HEIGHT)):    #框選特定類別
+        if (labels[label_id] != ''):    # 框選所有類別
+        # if (labels[label_id] == 'person') and (box_top > int(0.5* CAMERA_HEIGHT)):    # 框選特定類別
           cv2.rectangle(image_src,(box_left,box_top),(box_right,box_bottom),(0,0,255),2)
           cv2.putText(image_src,labels[label_id] +' score=' +str(round(results[num]['score'],4)),
             (box_left,box_top+20),cv2.FONT_HERSHEY_SIMPLEX,0.6,(0,255,255),1,cv2.LINE_AA)
 
+        # 印出結果
         print(results[num],labels[label_id])
-        products.insert(0, labels[label_id])
+        products.insert(0, labels[label_id]) # 將偵測到的結果加入 products list 中
         print(box_left,box_top,box_right,box_bottom)
         print("***************************************************************")
 
+      # 設定 FPS, 並加入相機畫面中
       FPS_text = "FPS=" + str(round(1/inference_time,2))
 
       cv2.putText(image_src,
@@ -177,7 +184,7 @@ def main():
 
       cv2.imshow('Object Detecting....',image_src)
 
-    times=times+1
+    times=times+1  # 10 個畫面才偵測一次
     if (times>10) :
       times=1
 

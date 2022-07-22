@@ -24,7 +24,7 @@ class Ui_Main(object):
         self.background = QtWidgets.QLabel(Form)
         self.background.setGeometry(QtCore.QRect(0, 0, 1000, 800))
         self.background.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"border-radius:50px;")
+                                      "border-radius:50px;")
         self.background.setText("")
         self.background.setObjectName("background")
         self.verticalLayoutWidget = QtWidgets.QWidget(Form)
@@ -40,42 +40,44 @@ class Ui_Main(object):
         self.verticalLayout.addWidget(self.camera)
         self.control_bt = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.control_bt.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"font: 12pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                      "font: 12pt \"Times New Roman\";\n"
+                                      "color: rgb(255, 255, 255);")
         self.control_bt.setObjectName("control_bt")
         self.verticalLayout.addWidget(self.control_bt)
         self.Content = QtWidgets.QLabel(Form)
         self.Content.setGeometry(QtCore.QRect(600, 20, 231, 61))
         self.Content.setStyleSheet("font: 26pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                   "color: rgb(255, 255, 255);")
         self.Content.setObjectName("Content")
         self.horizontalLayoutWidget = QtWidgets.QWidget(Form)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(600, 120, 381, 61))
+        self.horizontalLayoutWidget.setGeometry(
+            QtCore.QRect(600, 120, 381, 61))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(
+            self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.label_Name = QtWidgets.QLabel(self.horizontalLayoutWidget)
         self.label_Name.setStyleSheet("font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                      "color: rgb(255, 255, 255);")
         self.label_Name.setObjectName("label_Name")
         self.horizontalLayout.addWidget(self.label_Name)
         self.label_Price = QtWidgets.QLabel(self.horizontalLayoutWidget)
         self.label_Price.setStyleSheet("font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                       "color: rgb(255, 255, 255);")
         self.label_Price.setObjectName("label_Price")
         self.horizontalLayout.addWidget(self.label_Price)
         self.label_Total = QtWidgets.QLabel(Form)
         self.label_Total.setGeometry(QtCore.QRect(600, 580, 71, 41))
         self.label_Total.setStyleSheet("font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                       "color: rgb(255, 255, 255);")
         self.label_Total.setObjectName("label_Total")
         self.total = QtWidgets.QLineEdit(Form)
         self.total.setGeometry(QtCore.QRect(670, 580, 311, 41))
         self.total.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"border-color: rgb(0, 0, 0);\n"
-"font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                 "border-color: rgb(0, 0, 0);\n"
+                                 "font: 18pt \"Times New Roman\";\n"
+                                 "color: rgb(255, 255, 255);")
         self.total.setObjectName("total")
         self.exit = QtWidgets.QPushButton(Form)
         self.exit.setGeometry(QtCore.QRect(860, 700, 111, 71))
@@ -83,40 +85,40 @@ class Ui_Main(object):
         font.setPointSize(26)
         self.exit.setFont(font)
         self.exit.setStyleSheet("\n"
-"QPushButton#exit{\n"
-"    \n"
-"    background-color: rgb(150,150, 150);\n"
-"    color: rgb(0, 0, 0);\n"
-"    border-radius:15px;\n"
-"}\n"
-"QPushButton#exit:hover{\n"
-"    background-color: rgb(116, 126, 89);\n"
-"    color: rgb(255, 255, 255);\n"
-"}\n"
-"QPushButton#exit:pressed{\n"
-"    padding-left:5px;\n"
-"    padding-top:5px;\n"
-"    color: rgb(255, 255, 255);\n"
-"    background-color: rgb(100, 100, 50);\n"
-"}")
+                                "QPushButton#exit{\n"
+                                "    \n"
+                                "    background-color: rgb(150,150, 150);\n"
+                                "    color: rgb(0, 0, 0);\n"
+                                "    border-radius:15px;\n"
+                                "}\n"
+                                "QPushButton#exit:hover{\n"
+                                "    background-color: rgb(116, 126, 89);\n"
+                                "    color: rgb(255, 255, 255);\n"
+                                "}\n"
+                                "QPushButton#exit:pressed{\n"
+                                "    padding-left:5px;\n"
+                                "    padding-top:5px;\n"
+                                "    color: rgb(255, 255, 255);\n"
+                                "    background-color: rgb(100, 100, 50);\n"
+                                "}")
         self.exit.setObjectName("exit")
         self.Name = QtWidgets.QTextEdit(Form)
         self.Name.setGeometry(QtCore.QRect(600, 180, 191, 350))
         self.Name.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"border-color: rgb(0, 0, 0);\n"
-"font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                "border-color: rgb(0, 0, 0);\n"
+                                "font: 18pt \"Times New Roman\";\n"
+                                "color: rgb(255, 255, 255);")
         self.Name.setObjectName("Name")
         self.Price = QtWidgets.QTextEdit(Form)
         self.Price.setGeometry(QtCore.QRect(789, 180, 190, 350))
         self.Price.setStyleSheet("background-color: rgb(0, 0, 0);\n"
-"border-color: rgb(0, 0, 0);\n"
-"font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+                                 "border-color: rgb(0, 0, 0);\n"
+                                 "font: 18pt \"Times New Roman\";\n"
+                                 "color: rgb(255, 255, 255);")
         self.Price.setObjectName("Price")
 
         self.retranslateUi(Form)
-        self.exit.clicked.connect(Form.close) # type: ignore
+        self.exit.clicked.connect(Form.close)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):

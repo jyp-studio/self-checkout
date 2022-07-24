@@ -2,6 +2,7 @@
 from msilib.schema import Font
 import sys
 import time
+from typing_extensions import Self
 import cv2
 import threading
 
@@ -14,7 +15,7 @@ from PyQt5.QtGui import QImage, QPixmap
 
 # 引入其他人程式------------------
 import OBJECT_FILE_tflite
-import voice_detector_CAMERA
+import voice_detector0720
 import GetPrice
 # --------------------------------
 
@@ -74,10 +75,11 @@ class MainWindow(QWidget, Ui_Main):
         self.control_bt.clicked.connect(self.controlTimer)
 
         # 啟用聲音辨識並連結到controlTimer--------------------------
+        
 
-        if voice_detector_CAMERA.main() == 1:
-            thread(self.controlTimer())
-
+    def voice_tread(self):
+        if voice_detector0720.main() == 1:
+            self.controlTimer(self)
         # ---------------------------------------------------------
 
     # view camera #這邊是在抓取攝影機的資料 有關於筆電鏡頭的資料
@@ -105,6 +107,7 @@ class MainWindow(QWidget, Ui_Main):
             self.timer.start(20)
             # update control_bt text
             # 按下start 開始啟動 這邊可以做啟動後要的程式書寫 #--------------------------------------------------------------------------
+    #        thread(MainWindow.voice_tread(MainWindow))
 
             ll = OBJECT_FILE_tflite.main()
             SoldData, InventoryData = GetPrice.gsheet(ll)
@@ -124,7 +127,7 @@ class MainWindow(QWidget, Ui_Main):
             # 按下stop 鏡頭會暫停 這邊可以做關閉後要的程式書寫
 
             # 可能是要做資料傳輸google sheet 回傳庫存以及將抓到的物件印在GUI上
-
+            
             self.control_bt.setText("Start")
             self.Name.setText("stop")
             self.Price.setText("stop")
@@ -136,8 +139,9 @@ if __name__ == "__main__":
     Start = StartWindow()
     Main = MainWindow()
 
-    Start.show()
+    Start.show() # 這在哪? 這pyqt預設的東西吧 
     Start_Button = Start.Start_Button
     Start_Button.clicked.connect(Main.show)
+#    thread(MainWindow.voice_tread(MainWindow))
 
     sys.exit(app.exec_())

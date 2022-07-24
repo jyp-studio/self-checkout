@@ -1,3 +1,4 @@
+from importlib.resources import path
 import speech_recognition as sr
 import time
 import threading

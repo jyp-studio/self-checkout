@@ -80,10 +80,10 @@ def main():
       '--model', help='File path of .tflite file.', required=False,
       default='model.tflite')
   parser.add_argument(
-      '--labels', help='File path of labels file.', required=False,
+      '--labels', help='File path of labels file.', #required=False,
       default='coco_labels.txt')
   parser.add_argument(
-      '--file', help='File path of video(.mp4) file.', required=True,
+      '--file', help='File path of video(.mp4) file.', required=False, #讓他可以先不用-----------
       default='test4.mp4')
   parser.add_argument(
       '--threshold',

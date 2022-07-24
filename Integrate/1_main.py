@@ -1,6 +1,5 @@
 import GUI_2 as GUI
-import OBJECT_FILE_tflite
-import GetPrice
+
 
 
 #def my_think():

@@ -4,6 +4,8 @@ import threading
 import re
 import requests
 
+import OBJECT_FILE_tflite
+
 def main():
     try:
         while True:
@@ -33,7 +35,8 @@ def main():
                     print("你說: " + speechtext)
                     if re.search('\s*開始結帳\s*',speechtext):
                         print('開始結帳')
-                        return 1
+                        ll = OBJECT_FILE_tflite.main()
+                        return ll
                          # 這裡需要有程式連到影像辨識
 
                     elif re.search('\s*開始程式\s*',speechtext):

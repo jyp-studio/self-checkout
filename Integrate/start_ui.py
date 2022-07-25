@@ -48,6 +48,7 @@ class Ui_Start(object):
 "    background-color: rgb(100, 100, 50);\n"
 "}")
         self.Start_Button.setObjectName("Start_Button")
+        
         self.exit = QtWidgets.QPushButton(Form)
         self.exit.setGeometry(QtCore.QRect(810, 710, 111, 71))
         font = QtGui.QFont()
@@ -75,6 +76,7 @@ class Ui_Start(object):
         self.retranslateUi(Form)
         self.exit.clicked.connect(Form.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Form)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

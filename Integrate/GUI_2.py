@@ -6,6 +6,9 @@ from typing_extensions import Self
 import cv2
 import threading
 
+
+from sqlalchemy import true
+from sympy import false
 from start_ui import *
 from Main_ui import *
 
@@ -19,7 +22,6 @@ import voice_detector0720
 import GetPrice
 # --------------------------------
 
-
 def thread(func, *args):
     '''
     using multi-threading to prevent the main threading 
@@ -28,12 +30,12 @@ def thread(func, *args):
     # make a thread
     t = threading.Thread(target=func, args=args)
     t.setDaemon(True)  # make it daemon
-    t.start()  # start it
-
+    #t.start()  # start it
+   # t.join()
 
 a = str('appel\nball\ncook')  # 自訂字串
 # 起始畫面的基本設定
-
+threads=[]
 
 class StartWindow(QWidget, Ui_Start):
     def __init__(self):
@@ -69,10 +71,12 @@ class MainWindow(QWidget, Ui_Main):
         # create a timer
         self.timer = QTimer()
         # set timer timeout callback function
-        self.timer.timeout.connect(self.viewCam)  # 連結筆電攝影機的功能
+#ㄋ        self.timer.timeout.connect(self.viewCam)  # 連結筆電攝影機的功能
         # set control_bt callback clicked  function
         # 按下start後呼叫controlTimer 這支程式
+
         self.control_bt.clicked.connect(self.controlTimer)
+        #self.controlTimer()
 
         # 啟用聲音辨識並連結到controlTimer--------------------------
         
@@ -84,18 +88,18 @@ class MainWindow(QWidget, Ui_Main):
 
     # view camera #這邊是在抓取攝影機的資料 有關於筆電鏡頭的資料
 
-    def viewCam(self):
-        # read image in BGR format
-        ret, image = self.cap.read()
-        # convert image to RGB format
-        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        # get image infos
-        height, width, channel = image.shape
-        step = channel * width
-        # create QImage from image
-        qImg = QImage(image.data, width, height, step, QImage.Format_RGB888)
-        # show image in img_label
-        self.camera.setPixmap(QPixmap.fromImage(qImg))
+#    def viewCam(self):
+#        # read image in BGR format
+#        ret, image = self.cap.read()
+#        # convert image to RGB format
+#        image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+#        # get image infos
+#        height, width, channel = image.shape
+#        step = channel * width
+#        # create QImage from image
+#        qImg = QImage(image.data, width, height, step, QImage.Format_RGB888)
+#        # show image in img_label
+#        self.camera.setPixmap(QPixmap.fromImage(qImg))
 
     # start/stop timer #按下start或stop 會做甚麼樣的動作
     def controlTimer(self):
@@ -108,8 +112,9 @@ class MainWindow(QWidget, Ui_Main):
             # update control_bt text
             # 按下start 開始啟動 這邊可以做啟動後要的程式書寫 #--------------------------------------------------------------------------
     #        thread(MainWindow.voice_tread(MainWindow))
+            ll = voice_detector0720.main()
 
-            ll = OBJECT_FILE_tflite.main()
+            #ll = OBJECT_FILE_tflite.main()
             SoldData, InventoryData = GetPrice.gsheet(ll)
             a = ("賣出了", SoldData, "\n剩下", InventoryData)
 
@@ -122,7 +127,7 @@ class MainWindow(QWidget, Ui_Main):
             # stop timer
             self.timer.stop()
             # release video capture
-            self.cap.release()
+#            self.cap.release()
             # update control_bt text
             # 按下stop 鏡頭會暫停 這邊可以做關閉後要的程式書寫
 
@@ -139,9 +144,8 @@ if __name__ == "__main__":
     Start = StartWindow()
     Main = MainWindow()
 
-    Start.show() # 這在哪? 這pyqt預設的東西吧 
+    threads.append(thread(Start.show()))
+#    threads.append(thread(MainWindow.voice_tread(MainWindow)))
     Start_Button = Start.Start_Button
     Start_Button.clicked.connect(Main.show)
-#    thread(MainWindow.voice_tread(MainWindow))
-
     sys.exit(app.exec_())

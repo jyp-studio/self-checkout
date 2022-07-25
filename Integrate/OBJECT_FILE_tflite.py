@@ -80,7 +80,7 @@ def main():
       '--model', help='File path of .tflite file.', required=False,
       default='model.tflite')
   parser.add_argument(
-      '--labels', help='File path of labels file.', #required=False,
+      '--labels', help='File path of labels file.', required=False,
       default='coco_labels.txt')
   parser.add_argument(
       '--file', help='File path of video(.mp4) file.', required=False, #讓他可以先不用-----------
@@ -134,6 +134,7 @@ def main():
     ret,image_src =cap.read()
 
     image_size=image_src.shape
+    
     CAMERA_HEIGHT=image_size[0]
     CAMERA_WIDTH=image_size[1]
     
@@ -189,7 +190,7 @@ def main():
     if (times>10) :
       times=1
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord('q') :
       key_detect = 1
 
   cap.release()
@@ -197,13 +198,13 @@ def main():
 
 #--------------------------------------------------------------------------
   bb = [abc]
-  bb.clear
+  bb.clear()
   for product in products:
         bb.append(product)
   return bb
   #with open('product_list.txt', 'w') as f:  # product list 匯出成 txt file
   #  for product in products:
   #      f.write(f"{product}\n")
-        
+ 
 if __name__ == '__main__':
-  main()
+  print(main())

@@ -3,7 +3,6 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 
-
  # google API , to post data to google sheet
 scope = ["https://spreadsheets.google.com/feeds",   
         'https://www.googleapis.com/auth/spreadsheets',
@@ -95,22 +94,17 @@ def gsheet(datalist):
             Soldsheet.update_cell(index +2 , SoldAmountCol +1  , SoldAmount)
             
             print("--------------")
-
         res['Total'] = count
     
-   
-    print(f"Each price of product and total value : {res}")
-    print(f"The inventories of products before purchasing : {PreInvres} ")
-    print(f"The inventories of products after purchasing  : {Invres} " )
+#    print(f"Each price of product and total value : {res}")
+#    print(f"The inventories of products before purchasing : {PreInvres} ")
+#    print(f"The inventories of products after purchasing  : {Invres} " )
     return res, Invres
 
-def main():
+if __name__ == '__main__':
     data = ['mouse', 'mouse', 'keyboard','cup','laptop','chair','Nothing']
     print(len(data))
     SoldData, InventoryData = gsheet(data)
     print(SoldData)
     print("+++++")
     print(InventoryData)
-
-if __name__ == '__main__':
-    main()

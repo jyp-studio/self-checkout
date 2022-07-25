@@ -83,7 +83,7 @@ def main():
       '--labels', help='File path of labels file.', required=False,
       default='coco_labels.txt')
   parser.add_argument(
-      '--file', help='File path of video(.mp4) file.', required=False, #讓他可以先不用-----------
+      '--file', help='File path of video(.mp4) file.', required=False,
       default='test4.mp4')
   parser.add_argument(
       '--threshold',
@@ -100,13 +100,11 @@ def main():
   _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
 
   cap = cv2.VideoCapture(args.file) # 讀取指定的檔案
-  # cap.set(cv2.CAP_PROP_FRAME_WIDTH,CAMERA_WIDTH)
-  # cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT)
 
-  cv2.namedWindow('Object Detecting....') # 設定相機視窗的 title
+#  cv2.namedWindow('Object Detecting....') # 設定相機視窗的 title
 
   file_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-  cv2.createTrackbar('time', 'Object Detecting....', 0, file_frames, nothing)
+#  cv2.createTrackbar('time', 'Object Detecting....', 0, file_frames, nothing)
 
   key_detect = 0
   times=1
@@ -117,19 +115,19 @@ def main():
   products = list() # 空 list (放偵測到的物品項目)
 
   while (key_detect==0) :
-    if loop_flag == pos:
-      loop_flag = loop_flag + 1
-      cv2.setTrackbarPos('time', 'Object Detecting....', loop_flag)
-    else:
-      pos = cv2.getTrackbarPos('time', 'Object Detecting....')
-      loop_flag = pos
-      cap.set(cv2.CAP_PROP_POS_FRAMES, pos)
-
-    if (pos == file_frames-1):
-      loop_flag = 0
-      pos = 0
-      cv2.setTrackbarPos('time', 'Object Detecting....', loop_flag)
-      cap.set(cv2.CAP_PROP_POS_FRAMES, pos)
+#    if loop_flag == pos:
+#      loop_flag = loop_flag + 1
+#      cv2.setTrackbarPos('time', 'Object Detecting....', loop_flag)
+#    else:
+#      pos = cv2.getTrackbarPos('time', 'Object Detecting....')
+#      loop_flag = pos
+#      cap.set(cv2.CAP_PROP_POS_FRAMES, pos)
+#
+#    if (pos == file_frames-1):
+#      loop_flag = 0
+#      pos = 0
+#      cv2.setTrackbarPos('time', 'Object Detecting....', loop_flag)
+#      cap.set(cv2.CAP_PROP_POS_FRAMES, pos)
 
     ret,image_src =cap.read()
 
@@ -184,28 +182,20 @@ def main():
         (0,0,0),2,cv2.LINE_AA)
 
 
-      cv2.imshow('Object Detecting....',image_src)
+#      cv2.imshow('Object Detecting....',image_src)
+      cv2.imwrite("output.png",image_src)
 
     times=times+1  # 50 個畫面才偵測一次
     if (times>50) :
       key_detect = 1
       # times=1
-
-    # if cv2.waitKey(1) & 0xFF == ord('q') :
-    #   key_detect = 1
-
   cap.release()
   cv2.destroyAllWindows()
-
-#--------------------------------------------------------------------------
   bb = [abc]
   bb.clear()
   for product in products:
         bb.append(product)
   return bb
-  #with open('product_list.txt', 'w') as f:  # product list 匯出成 txt file
-  #  for product in products:
-  #      f.write(f"{product}\n")
  
 if __name__ == '__main__':
   print(main())

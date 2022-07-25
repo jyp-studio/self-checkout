@@ -1,8 +1,5 @@
 import speech_recognition as sr
-import time
-import threading
 import re
-import requests
 
 import OBJECT_FILE_tflite
 
@@ -37,21 +34,6 @@ def main():
                         print('開始結帳')
                         ll = OBJECT_FILE_tflite.main()
                         return ll
-                         # 這裡需要有程式連到影像辨識
-
-                    elif re.search('\s*開始程式\s*',speechtext):
-                        print('開始程式運作')
-                        return 1 #回傳個flag = 1 表開始-------------
-
-                    elif re.search('\s*結束程式\s*',speechtext):
-                        print('結束程式運作')
-                        return 2 #回傳個flag = 2 表結束--------------
-                    
-                    elif re.search('\s*你好\s*',speechtext):
-                        print('你好')
-
-                    elif re.search('\s*結束\s*',speechtext):
-                        print('結束')
 
     except KeyboardInterrupt:
         print("Quit")

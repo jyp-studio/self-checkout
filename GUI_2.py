@@ -1,24 +1,13 @@
 # Ptqt5 設定
-from msilib.schema import Font
 import sys
-from typing_extensions import Self
-import cv2
-from pyrsistent import b
-
-
-from sqlalchemy import true
-from sympy import false
-from start_ui import *
-from Main_ui import *
-
 from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 from PyQt5.QtCore import pyqtSlot, QTimer
 from PyQt5.QtGui import QImage, QPixmap
-
-# 引入其他人程式------------------
+import cv2
+from start_ui import *
+from Main_ui import *
 import voice_detector0720
 import GetPrice
-# --------------------------------
 
 a = str('appel\nball\ncook')  # 自訂字串
 # 起始畫面的基本設定
@@ -60,12 +49,10 @@ class MainWindow(QWidget, Ui_Main):
         self.control_bt.clicked.connect(self.controlTimer)
         #self.controlTimer()
 
-    # view camera #這邊是在抓取攝影機的資料 有關於筆電鏡頭的資料
-    def viewCam(self):
+    def viewCam(self): #改成抓取圖片並顯示
         # read image in BGR format
         image = cv2.imread('output.png')
         image = cv2.resize(image,(571, 731))
-#        ret, image = self.cap.read()
         # convert image to RGB format
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         # get image infos
@@ -81,11 +68,10 @@ class MainWindow(QWidget, Ui_Main):
         # if timer is stopped
         if not self.timer.isActive():
             # create video capture
-            #            self.cap = cv2.VideoCapture(0) #啟動鏡頭
             # start timer
             self.timer.start(20)
             # update control_bt text
-            # 按下start 開始啟動 這邊可以做啟動後要的程式書寫 #--------------------------------------------------------------------------
+            # 按下start 開始啟動 這邊可以做啟動後要的程式書寫
             ll = voice_detector0720.main()
             SoldData, InventoryData = GetPrice.gsheet(ll)
             a = ""
@@ -96,7 +82,7 @@ class MainWindow(QWidget, Ui_Main):
                 price = price + str(SoldData[ll[i]])
                 price = price + "\n"
             total = str(SoldData["Total"])
-            # SetText("裡面放要給的值")  #--------------------------------------------------------------------------
+
             self.control_bt.setText("Stop")
             self.Name.setText(a)  # 把字串放入
             self.Price.setText(price)
@@ -105,11 +91,8 @@ class MainWindow(QWidget, Ui_Main):
         else:
             # stop timer
             self.timer.stop()
-            # release video capture
-#            self.cap.release()
             # update control_bt text
             # 按下stop 鏡頭會暫停 這邊可以做關閉後要的程式書寫
-            # 可能是要做資料傳輸google sheet 回傳庫存以及將抓到的物件印在GUI上
             self.control_bt.setText("Start")
             self.Name.setText('name')
             self.Price.setText('price')

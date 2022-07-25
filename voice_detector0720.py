@@ -11,14 +11,12 @@ def main():
             m.RATE = 44100
             m.CHUNK = 512
 
-            print("你好，請說開始結帳")
             with m as source:
                 r.adjust_for_ambient_noise(source)
                 if (r.energy_threshold < 2000):
                     r.energy_threshold = 2000
-                print("Set minimum energy threshold to {}".format(r.energy_threshold))
-
-                print("再說一次!")
+                    
+                print("你好，請說開始結帳")
                 audio = r.listen(source)
                 print("辨識中")
 

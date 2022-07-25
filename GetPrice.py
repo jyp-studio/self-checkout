@@ -1,5 +1,4 @@
 import gspread
-# from oauth2client.soauth2clientervice_account import ServiceAccountCredentials
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 
@@ -95,10 +94,7 @@ def gsheet(datalist):
             
             print("--------------")
         res['Total'] = count
-    
-#    print(f"Each price of product and total value : {res}")
-#    print(f"The inventories of products before purchasing : {PreInvres} ")
-#    print(f"The inventories of products after purchasing  : {Invres} " )
+
     return res, Invres
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ import time
 from typing_extensions import Self
 import cv2
 import threading
+from pyrsistent import b
 
 
 from sqlalchemy import true
@@ -116,12 +117,20 @@ class MainWindow(QWidget, Ui_Main):
 
             #ll = OBJECT_FILE_tflite.main()
             SoldData, InventoryData = GetPrice.gsheet(ll)
-            a = ("賣出了", SoldData, "\n剩下", InventoryData)
-
+#            a = ("賣出了", SoldData, "\n剩下", InventoryData)
+            a = ""
+            price = ""
+            for i in range(0,len(ll)):
+                a = a + ll[i]
+                a = a + "\n"
+                price = price + str(SoldData[ll[i]])
+                price = price + "\n"
+            total = str(SoldData["Total"])
             # SetText("裡面放要給的值")  #--------------------------------------------------------------------------
             self.control_bt.setText("Stop")
             self.Name.setText(a)  # 把字串放入
-            self.Price.setText("start")
+            self.Price.setText(price)
+            self.total.setText(total)
         # if timer is started
         else:
             # stop timer
@@ -134,8 +143,9 @@ class MainWindow(QWidget, Ui_Main):
             # 可能是要做資料傳輸google sheet 回傳庫存以及將抓到的物件印在GUI上
             
             self.control_bt.setText("Start")
-            self.Name.setText("stop")
-            self.Price.setText("stop")
+            self.Name.setText(a)
+            self.Price.setText(price)
+            self.total.setText(total)
 
 
 if __name__ == "__main__":

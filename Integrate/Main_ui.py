@@ -105,14 +105,14 @@ class Ui_Main(object):
         self.Name.setStyleSheet("background-color: rgb(0, 0, 0);\n"
 "border-color: rgb(0, 0, 0);\n"
 "font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+"color: rgb(0, 0, 0);")
         self.Name.setObjectName("Name")
         self.Price = QtWidgets.QTextEdit(Form)
         self.Price.setGeometry(QtCore.QRect(789, 180, 190, 350))
         self.Price.setStyleSheet("background-color: rgb(0, 0, 0);\n"
 "border-color: rgb(0, 0, 0);\n"
 "font: 18pt \"Times New Roman\";\n"
-"color: rgb(255, 255, 255);")
+"color: rgb(0, 0, 0);")
         self.Price.setObjectName("Price")
 
         self.retranslateUi(Form)

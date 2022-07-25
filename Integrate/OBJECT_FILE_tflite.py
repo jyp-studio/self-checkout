@@ -186,12 +186,13 @@ def main():
 
       cv2.imshow('Object Detecting....',image_src)
 
-    times=times+1  # 10 個畫面才偵測一次
-    if (times>10) :
-      times=1
-
-    if cv2.waitKey(1) & 0xFF == ord('q') :
+    times=times+1  # 50 個畫面才偵測一次
+    if (times>50) :
       key_detect = 1
+      # times=1
+
+    # if cv2.waitKey(1) & 0xFF == ord('q') :
+    #   key_detect = 1
 
   cap.release()
   cv2.destroyAllWindows()

@@ -1,4 +1,5 @@
 import gspread
+# from oauth2client.soauth2clientervice_account import ServiceAccountCredentials
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 
@@ -103,11 +104,13 @@ def gsheet(datalist):
     print(f"The inventories of products after purchasing  : {Invres} " )
     return res, Invres
 
-
 def main():
     data = ['mouse', 'mouse', 'keyboard','cup','laptop','chair','Nothing']
+    print(len(data))
     SoldData, InventoryData = gsheet(data)
-
+    print(SoldData)
+    print("+++++")
+    print(InventoryData)
 
 if __name__ == '__main__':
     main()

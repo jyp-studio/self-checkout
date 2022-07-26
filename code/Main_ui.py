@@ -37,6 +37,7 @@ class Ui_Main(object):
         self.camera.setStyleSheet("background-color: rgb(45, 45, 45);")
         self.camera.setText("")
         self.camera.setObjectName("camera")
+        self.camera.setStyleSheet("font: 18pt \"Times New Roman\";\n""color: rgb(255, 255, 255);")
         self.verticalLayout.addWidget(self.camera)
         self.control_bt = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.control_bt.setStyleSheet("background-color: rgb(0, 0, 0);\n"
@@ -128,6 +129,7 @@ class Ui_Main(object):
         self.label_Price.setText(_translate("Form", "Price"))
         self.label_Total.setText(_translate("Form", "Total"))
         self.exit.setText(_translate("Form", "exit"))
+        
 
 
 if __name__ == "__main__":

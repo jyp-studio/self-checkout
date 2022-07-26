@@ -36,6 +36,10 @@ def main():
                         print('拍照')
                         ll = OBJECT_FILE_tflite.main(1)
                         return ll
+                    elif re.search('\s*結帳\s*',speechtext):
+                        print('結帳')
+                        ll = OBJECT_FILE_tflite.main(0)
+                        return ll
 
     except KeyboardInterrupt:
         print("Quit")

@@ -1,5 +1,6 @@
 # Ptqt5 設定
 import sys
+from turtle import delay
 from PyQt5.QtWidgets import QApplication, QWidget, QDesktopWidget
 from PyQt5.QtCore import pyqtSlot, QTimer
 from PyQt5.QtGui import QImage, QPixmap
@@ -8,6 +9,7 @@ from start_ui import *
 from Main_ui import *
 import voice_detector0720
 import GetPrice
+import time
 
 a = str('appel\nball\ncook')  # 自訂字串
 # 起始畫面的基本設定
@@ -65,15 +67,20 @@ class MainWindow(QWidget, Ui_Main):
 
     # start/stop timer #按下start或stop 會做甚麼樣的動作
     def controlTimer(self):
+        
         # if timer is stopped
         if not self.timer.isActive():
-            # create video capture
+            print("loading...")
+            self.control_bt.setText("Stop")
+            self.camera.setText("loading...")
+            self.Name.setText("loading...")
+#            delay(10)
             # start timer
             self.timer.start(20)
             # update control_bt text
             # 按下start 開始啟動 這邊可以做啟動後要的程式書寫
+
             ll = voice_detector0720.main()
-            self.viewCam()
             SoldData, InventoryData = GetPrice.gsheet(ll)
             a = ""
             price = ""
@@ -83,7 +90,7 @@ class MainWindow(QWidget, Ui_Main):
                 price = price + str(SoldData[ll[i]])
                 price = price + "\n"
             total = str(SoldData["Total"])
-
+            
             self.control_bt.setText("Stop")
             self.Name.setText(a)  # 把字串放入
             self.Price.setText(price)

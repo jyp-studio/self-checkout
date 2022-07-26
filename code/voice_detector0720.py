@@ -30,7 +30,11 @@ def main():
                     print("你說: " + speechtext)
                     if re.search('\s*開始結帳\s*',speechtext):
                         print('開始結帳')
-                        ll = OBJECT_FILE_tflite.main()
+                        ll = OBJECT_FILE_tflite.main(0)
+                        return ll
+                    elif re.search('\s*拍照\s*',speechtext):
+                        print('拍照')
+                        ll = OBJECT_FILE_tflite.main(1)
                         return ll
 
     except KeyboardInterrupt:

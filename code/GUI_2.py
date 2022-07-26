@@ -73,6 +73,7 @@ class MainWindow(QWidget, Ui_Main):
             # update control_bt text
             # 按下start 開始啟動 這邊可以做啟動後要的程式書寫
             ll = voice_detector0720.main()
+            self.viewCam()
             SoldData, InventoryData = GetPrice.gsheet(ll)
             a = ""
             price = ""

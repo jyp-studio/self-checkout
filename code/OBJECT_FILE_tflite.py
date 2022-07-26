@@ -64,7 +64,7 @@ def detect_objects(interpreter, image, threshold):
       results.append(result)
   return results
 
-def main():
+def main(flag):
   parser = argparse.ArgumentParser(
       formatter_class=argparse.ArgumentDefaultsHelpFormatter)
   parser.add_argument(
@@ -88,8 +88,10 @@ def main():
 
   interpreter.allocate_tensors()
   _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
-
-  cap = cv2.VideoCapture(args.file) # 讀取指定的檔案
+  if flag == 1:
+    cap = cv2.VideoCapture(0)
+  elif flag != 1:
+    cap = cv2.VideoCapture(args.file) # 讀取指定的檔案
   key_detect = 0
   times=1
   products = list() # 空 list (放偵測到的物品項目)
